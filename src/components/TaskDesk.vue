@@ -11,3 +11,4 @@ import TaskColumn from './TaskColumn.vue';
         </div>
     </main>
 </template>
+

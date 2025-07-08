@@ -791,7 +791,6 @@ body {
   text-align: center;
   z-index: 2;
 }
-
 .main {
   width: 100%;
   background-color: #EAEEF6;
@@ -1086,4 +1085,8 @@ body {
   .pop-exit__form-group {
     display: block;
   }
+}
+
+.closeBtn{
+  cursor: pointer;
 }
