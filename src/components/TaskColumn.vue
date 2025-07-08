@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <div class="main__column column">
         <div class="column__title">
             <p>Без статуса</p>
@@ -425,4 +425,17 @@
             </div>
         </div>
     </div>
+</template> -->
+
+<template>
+  <div ref="myDiv"></div>
 </template>
+
+<script>
+import { cns } from '@/js/renderCarts.js'
+export default {
+  mounted() {
+    this.$refs.myDiv.innerHTML = cns();
+  }
+}
+</script>
