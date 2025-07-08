@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
@@ -147,7 +147,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
@@ -184,7 +184,7 @@
                 </div>
             </div>
         </div>
-    </div>						
+    </div>
     <div class="main__column">
         <div class="column__title">
             <p>Нужно сделать</p>
@@ -267,7 +267,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
@@ -303,7 +303,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="cards__item">
                 <div class="cards__card card">
                     <div class="card__group">
