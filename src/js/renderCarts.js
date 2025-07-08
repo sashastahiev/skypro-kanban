@@ -1,9 +1,7 @@
 import { carts } from "@/mocks.js/task"
-export const cns = () => {
-  // let content = document.querySelectorAll('main__content')
-  let colorTopic = ''
-  const cartsNoneStatus = carts.filter(x => x.status == 'Без статуса')
-  let contentNoneStatus = cartsNoneStatus.map((cart, index) => {
+let colorTopic = ''
+const GetHtmlCardsByStatus = (CardsByStatus, status) => {
+  let content = CardsByStatus.map((cart, index) => {
     if (cart.topic == 'Research')
       colorTopic = '_green'
     if (cart.topic == 'Web Design')
@@ -41,20 +39,38 @@ export const cns = () => {
                             </clipPath>
                         </defs>
                     </svg>
-                    <p>${cart.date}</p>
-                </div>
-            </div>
-        </div>
-    </div>`
-  }).join()
-  contentNoneStatus = `
-    <div class="main__column column">
+                      <p>${cart.date}</p>
+                  </div>
+              </div>
+          </div>
+      </div>`
+  }).join("")
+  content = `
+    <div class="main__column">
         <div class="column__title">
-            <p>Без статуса</p>
+            <p>${status}</p>
         </div>
         <div class="cards">
-        ${contentNoneStatus}
+        ${content}
         </div>
     </div>`
-  return contentNoneStatus
+  return content
+}
+export const cns = () => {
+  const cartsNoneStatus = carts.filter(x => x.status == 'Без статуса')
+  let contentNoneStatus = GetHtmlCardsByStatus(cartsNoneStatus, 'Без статуса')
+
+  const cartsNeedMake = carts.filter(x => x.status == 'Нужно сделать')
+  let contentNeedMake = GetHtmlCardsByStatus(cartsNeedMake, 'Нужно сделать')
+
+  const cartsInWork = carts.filter(x => x.status == 'В работе')
+  let contentInWork = GetHtmlCardsByStatus(cartsInWork, 'В работе')
+
+  const cartsTesting = carts.filter(x => x.status == 'Тестирование')
+  let contentTesting = GetHtmlCardsByStatus(cartsTesting, 'Тестирование')
+
+  const cartsDone = carts.filter(x => x.status == 'Готово')
+  let contentDone = GetHtmlCardsByStatus(cartsDone, 'Готово')
+
+  return contentNoneStatus + contentNeedMake + contentInWork + contentTesting + contentDone
 }

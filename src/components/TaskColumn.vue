@@ -428,7 +428,7 @@
 </template> -->
 
 <template>
-  <div ref="myDiv"></div>
+  <div ref="myDiv" class="main__content"></div>
 </template>
 
 <script>
