@@ -3,6 +3,7 @@
     <div class="loader"></div>
   </div>
   <div v-else v-html="content" class="main__content"></div>
+  <div id="message">Задач нет</div>
 </template>
 
 <script>
@@ -22,9 +23,12 @@ export default {
         const cardsByStatus = carts.filter(x => x.status == status)
         return GetHtmlCardsByStatus(cardsByStatus, status)
       }).join("")
+      if (carts.length == 0) {
+        document.getElementById('message').style.display = 'block';
+      }
       this.content = desk
       this.loading = false
-    }, 1000)
+    }, 2000)
   }
 }
 </script>
@@ -40,10 +44,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  animation: fadeOut 0.5s ease forwards;
+  z-index: 100;
+  animation: fadeOut 2s ease forwards;
 }
-
 .loader {
   width: 80px;
   height: 80px;
@@ -52,14 +55,20 @@ export default {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-
-/* Анимация вращения */
+ #message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-/* Анимация исчезновения */
 @keyframes fadeOut {
   from { opacity: 1; }
   to { opacity: 0; visibility: hidden; }
