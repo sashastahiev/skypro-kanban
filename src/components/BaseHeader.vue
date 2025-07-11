@@ -10,7 +10,7 @@
                 </div>
                 <nav class="header__nav">
                     <button class="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
-                    <a @click="hideElementshow" href="#" class="header__user _hover02">Ivan Ivanov</a>
+                    <a @click="hideElementshow" class="header__user _hover02">Ivan Ivanov</a>
                     <div v-show="isVisible" class="header__pop-user-set pop-user-set">
                         <p class='closeBtn' @click="hideElementclose" href="">x</p>
                         <p class="pop-user-set__name">Ivan Ivanov</p>
