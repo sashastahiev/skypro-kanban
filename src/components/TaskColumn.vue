@@ -17,13 +17,13 @@ export default {
   },
   mounted() {
     setTimeout(() => {
-      const statusMas = ['Без статуса', 'Нужно сделать', 'В работе', 'Тестирование', 'Готово']
+      const statusMas = ['Без статуса', 'Нужно сделать', 'В работе', 'Тестирование', 'Готово'];
       const desk = statusMas.map((status) => {
         const cardsByStatus = carts.filter(x => x.status == status)
         return GetHtmlCardsByStatus(cardsByStatus, status)
-      }).join("")
-      this.content = desk
-      this.loading = false
+      }).join("");
+      this.content = desk;
+      this.loading = false;
     }, 1000)
   }
 }
