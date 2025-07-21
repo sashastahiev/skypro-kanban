@@ -73,4 +73,13 @@ export default {
   from { opacity: 1; }
   to { opacity: 0; visibility: hidden; }
 }
+.main__content {
+  width: 100%;
+  display: flex;
+}
+@media screen and (max-width: 1200px) {
+  .main__content {
+    display: block;
+  }
+}
 </style>

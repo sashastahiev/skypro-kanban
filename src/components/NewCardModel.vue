@@ -17,7 +17,7 @@
 							</div>
 						</form>
 						<div class="pop-new-card__calendar calendar">
-							<p class="calendar__ttl subttl">Даты</p>									
+							<p class="calendar__ttl subttl">Даты</p>
 							<div class="calendar__block">
 								<div class="calendar__nav">
 									<div class="calendar__month">Сентябрь 2023</div>
@@ -82,7 +82,7 @@
 										<div class="calendar__cell _other-month _weekend">1</div>
 									</div>
 								</div>
-								
+
 								<input type="hidden" id="datepick_value" value="08.09.2023">
 								<div class="calendar__period">
 									<p class="calendar__p date-end">Выберите срок исполнения <span class="date-control"></span>.</p>
@@ -108,5 +108,276 @@
 				</div>
 			</div>
 		</div>
-	</div>		
+	</div>
 </template>
+
+<style scoped>
+.pop-new-card:target {
+  display: block;
+}
+.pop-new-card {
+  display: none;
+  width: 100%;
+  min-width: 375px;
+  height: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 6;
+}
+.pop-new-card__container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+.pop-new-card__block {
+  display: block;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  max-width: 630px;
+  width: 100%;
+  padding: 40px 30px 48px;
+  border-radius: 10px;
+  border: 0.7px solid #D4DBE5;
+  position: relative;
+}
+.pop-new-card__content {
+  display: block;
+  text-align: left;
+}
+.pop-new-card__ttl {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+.pop-new-card__close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #94A6BE;
+  cursor: pointer;
+}
+.pop-new-card__close:hover {
+  color: #000000;
+}
+.pop-new-card__wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.form-new__block {
+  display: flex;
+  flex-direction: column;
+}
+.form-new__input, .form-new__area {
+  width: 100%;
+  outline: none;
+  padding: 14px;
+  background: transparent;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+}
+.form-new__input::-moz-placeholder, .form-new__area::-moz-placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+}
+.form-new__input::placeholder, .form-new__area::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1px;
+  color: #94A6BE;
+  letter-spacing: -0.14px;
+}
+.form-new__input {
+  margin: 20px 0;
+}
+.form-new__area {
+  max-width: 370px;
+  margin-top: 14px;
+  height: 200px;
+}
+.pop-new-card__calendar {
+    width: 100%;
+  }
+.calendar {
+  width: 182px;
+  margin-bottom: 20px;
+}
+.calendar__ttl {
+  margin-bottom: 14px;
+  padding: 0 7px;
+}
+.subttl {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+.calendar__block {
+  display: block;
+}
+.calendar__nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding: 0 7px;
+}
+.calendar__month {
+  color: #94A6BE;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 600;
+}
+.nav__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__action {
+  width: 18px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__action svg {
+  fill: #94A6BE;
+}
+.calendar__content {
+  margin-bottom: 12px;
+}
+.calendar__days-names{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 7px 0;
+  padding: 0 7px;
+}
+.calendar__day-name {
+  color: #94A6BE;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+.calendar__cells {
+  width: 182px;
+  height: 126px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.calendar__cell {
+  width: 22px;
+  height: 22px;
+  margin: 2px;
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #94A6BE;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+}
+._other-month {
+  opacity: 0;
+}
+._cell-day:hover {
+  color: #94A6BE;
+  background-color: #EAEEF6;
+}
+._current {
+  font-weight: 700;
+}
+.calendar__period {
+  padding: 0 7px;
+}
+.calendar__ttl, .calendar__nav, .calendar__period {
+  padding: 0;
+}
+.date-end {
+  margin-bottom: 14px;
+}
+.categories {
+  margin-bottom: 20px;
+}
+.categories__themes {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.categories__p {
+  margin-bottom: 14px;
+}
+.categories__theme {
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+}
+.categories__theme p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+}
+._active-category {
+  opacity: 1 !important;
+}
+._green {
+  background-color: #B4FDD1;
+  color: #06B16E;
+}
+
+._purple {
+  background-color: #E9D4FF;
+  color: #9A48F1;
+}
+.form-new__create {
+  width: 132px;
+  height: 30px;
+  background-color: #565EEF;
+  border-radius: 4px;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  color: #FFFFFF;
+  float: right;
+}
+@media screen and (max-width: 495px) {
+  .form-new__create {
+    width: 100%;
+    height: 40px;
+  }
+}
+._hover01:hover {
+  background-color: #33399b;
+}
+</style>

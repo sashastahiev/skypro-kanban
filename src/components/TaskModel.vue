@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="pop-browse__wrap">
-                        <form class="pop-browse__form form-browse" id="formBrowseCard" action="#">									
+                        <form class="pop-browse__form form-browse" id="formBrowseCard" action="#">
                             <div class="form-browse__block">
                                 <label for="textArea01" class="subttl">Описание задачи</label>
                                 <textarea class="form-browse__area" name="text" id="textArea01"  readonly placeholder="Введите описание задачи..."></textarea>
@@ -102,7 +102,7 @@
                                         <div class="calendar__cell _other-month _weekend">1</div>
                                     </div>
                                 </div>
-                        
+
                                 <input type="hidden" id="datepick_value" value="08.09.2023">
                                 <div class="calendar__period">
                                     <p class="calendar__p date-end">Срок исполнения: <span class="date-control">09.09.23</span></p>
@@ -131,9 +131,253 @@
                         </div>
                         <button class="btn-edit__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
                     </div>
-                                            
+
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+.pop-browse:target {
+  display: block;
+}
+.pop-browse {
+  display: none;
+  width: 100%;
+  height: 100%;
+  min-width: 375px;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 7;
+}
+.pop-browse__container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+.pop-browse__block {
+  display: block;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  max-width: 630px;
+  width: 100%;
+  padding: 40px 30px 38px;
+  border-radius: 10px;
+  border: 0.7px solid #D4DBE5;
+  position: relative;
+}
+.pop-browse__content {
+  display: block;
+  text-align: left;
+}
+.pop-browse__content .categories__theme {
+  opacity: 1;
+}
+.pop-browse__content .theme-down {
+  display: none;
+  margin-bottom: 20px;
+}
+.theme-top {
+  display: block;
+}
+.pop-browse__top-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.pop-browse__ttl {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.categories__theme {
+  display: inline-block;
+  width: auto;
+  height: 30px;
+  padding: 8px 20px;
+  border-radius: 24px;
+  margin-right: 7px;
+  opacity: 0.4;
+}
+.categories__theme p {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
+}
+._orange {
+  background-color: #FFE4C2;
+  color: #FF6D00;
+}
+.status {
+  margin-bottom: 11px;
+}
+.status__p {
+  margin-bottom: 14px;
+}
+.status__themes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.status__theme {
+  border-radius: 24px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  color: #94A6BE;
+  padding: 11px 14px 10px;
+  margin-right: 7px;
+  margin-bottom: 7px;
+}
+.status__theme p {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.14px;
+}
+.subttl {
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+._hide {
+  display: none;
+}
+._gray {
+  background: #94A6BE;
+  color: #FFFFFF;
+}
+.pop-new-card__calendar {
+    width: 100%;
+  }
+.calendar {
+	width: 182px;
+	margin-bottom: 20px;
+}
+
+.calendar__ttl {
+	margin-bottom: 14px;
+	padding: 0 7px;
+}
+.calendar__block {
+  display: block;
+}
+.calendar__month {
+	color: #94A6BE;
+	font-size: 14px;
+	line-height: 25px;
+	font-weight: 600;
+}
+.nav__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav__action {
+  width: 18px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav__action svg {
+  fill: #94A6BE;
+}
+.calendar__content {
+  margin-bottom: 12px;
+}
+.calendar__days-names{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 7px 0;
+  padding: 0 7px;
+}
+.calendar__day-name {
+  color: #94A6BE;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+.calendar__cells {
+  width: 182px;
+  height: 126px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.calendar__cell {
+  width: 22px;
+  height: 22px;
+  margin: 2px;
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  color: #94A6BE;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+}
+._other-month {
+  opacity: 0;
+}
+
+._cell-day:hover {
+  color: #94A6BE;
+  background-color: #EAEEF6;
+}
+._active-day {
+  background-color: #94A6BE;
+  color: #FFFFFF;
+}
+._current {
+  font-weight: 700;
+}
+.categories__p {
+  margin-bottom: 14px;
+}
+._orange {
+  background-color: #FFE4C2;
+  color: #FF6D00;
+}
+._active-category {
+  opacity: 1 !important;
+}
+.pop-browse__btn-browse, .pop-browse__btn-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pop-browse__btn-browse button, .pop-browse__btn-edit button {
+  height: 30px;
+  margin-bottom: 10px;
+  padding: 0 14px;
+}
+.pop-browse__btn-browse .btn-group button, .pop-browse__btn-edit .btn-group button {
+  margin-right: 8px;
+}
+.pop-browse__btn-browse, .pop-browse__btn-edit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+</style>

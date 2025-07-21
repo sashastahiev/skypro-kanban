@@ -1168,9 +1168,8 @@ body {
 		width: 100%;
 		padding: 0 16px;
 	}
-
-	.header {
-		&__btn-main-new {
+	.header{
+    &__btn-main-new {
 			z-index: 3;
 			position: fixed;
 			left: 16px;
@@ -1260,13 +1259,8 @@ body {
 				}
 			}
 		}
-
-
-
-	}
-
+  }
 	.form-browse {
-
 		&__area {
 			max-width: 100%;
 		}
