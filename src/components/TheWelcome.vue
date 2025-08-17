@@ -7,7 +7,6 @@ import TaskModel from './TaskModel.vue';
 
 </script>
 
-
 <template>
   <div class="wrapper">
 		<!-- pop-up start-->

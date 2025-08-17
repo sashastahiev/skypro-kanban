@@ -1,3 +1,4 @@
+
 <template>
     <header class="header">
         <div class="container">
@@ -9,7 +10,14 @@
                     <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></a>
                 </div>
                 <nav class="header__nav">
-                    <button class="header__btn-main-new _hover01" id="btnMainNew"><a href="#popNewCard">Создать новую задачу</a></button>
+                  <RouterLink to="/card/add">
+                    <!-- Внутри RouterLink можно добавить любой элемент, например, кнопку -->
+                    <button class="header__btn-main-new _hover01" id="btnMainNew">
+                      <!-- <a href="#popNewCard"> -->
+                      Создать новую задачу
+                    <!-- </a> -->
+                    </button>
+                  </RouterLink>
                     <a @click="hideElementshow" class="header__user _hover02">Ivan Ivanov</a>
                     <div v-show="isVisible" class="header__pop-user-set pop-user-set">
                         <p class='closeBtn' @click="hideElementclose" href="">x</p>

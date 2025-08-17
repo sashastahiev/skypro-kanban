@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,13 +13,12 @@ const router = createRouter({
       component: HomeView,
       children: [
         {
-          path: '/card/add',
-          component: () => import('/src/views/NewTaskView.vue'),
-        },
-
-        {
         path: '/card/:id',
           component: () => import('/src/views/TaskView.vue'),
+        },
+        {
+          path: '/card/add',
+          component: () => import('/src/views/NewTaskView.vue'),
         },
       ],
       meta: {
