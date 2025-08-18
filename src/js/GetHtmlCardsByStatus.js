@@ -14,13 +14,13 @@ let content = CardsByStatus.map((cart, index) => {
               <div class="card__theme ${colorTopic}">
                   <p class="${colorTopic}">${cart.topic}</p>
               </div>
-              <a href="#popBrowse" target="_self">
+              <RouterLink to="/card/id" target="_self">
                   <div class="card__btn">
                       <div></div>
                       <div></div>
                       <div></div>
                   </div>
-              </a>
+              </RouterLink>
           </div>
           <div class="card__content">
               <a href="" target="_blank">

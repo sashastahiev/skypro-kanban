@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
-//import HomeView from '@/views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,10 +10,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: SignInView,
+      component: HomeView,
       children: [
         {
-        path: '/card/:id',
+        path: '/card/id',
           component: () => import('/src/views/TaskView.vue'),
         },
         {
