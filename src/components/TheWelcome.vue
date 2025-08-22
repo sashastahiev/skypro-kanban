@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import BaseHeader from './BaseHeader.vue';
-import ExitModel from './ExitModel.vue';
-import NewCardModel from './NewCardModel.vue';
 import TaskDesk from './TaskDesk.vue';
-import TaskModel from './TaskModel.vue';
 
 </script>
 
 <template>
   <div class="wrapper">
-		<!-- pop-up start-->
-		<ExitModel />
-		<NewCardModel />
-		<TaskModel />
-		<!-- pop-up end-->
 		<BaseHeader />
 		<TaskDesk />
     </div>
@@ -569,7 +561,7 @@ body {
 }
 
 .pop-browse {
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -609,7 +601,7 @@ body {
   opacity: 1;
 }
 .pop-browse__content .theme-down {
-  display: none;
+  display: block;
   margin-bottom: 20px;
 }
 .pop-browse__content .theme-top {
@@ -1073,7 +1065,7 @@ body {
     margin-bottom: 20px;
   }
   .pop-browse__content .theme-top {
-    display: none;
+    display: block;
   }
   .pop-browse__form {
     max-width: 100%;

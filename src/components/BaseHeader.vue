@@ -1,7 +1,4 @@
-<script setup>
-import { RouterLink } from 'vue-router';
 
-</script>
 <template>
     <header class="header">
         <div class="container">
@@ -13,24 +10,19 @@ import { RouterLink } from 'vue-router';
                     <a href="" target="_self"><img src="/images/logo_dark.png" alt="logo"></a>
                 </div>
                 <nav class="header__nav">
-                  <RouterLink to="/card/add">
-                    <!-- Внутри RouterLink можно добавить любой элемент, например, кнопку -->
-                    <button class="header__btn-main-new _hover01" id="btnMainNew">
-                      <!-- <a href="#popNewCard"> -->
-                      Создать новую задачу
-                    <!-- </a> -->
-                    </button>
-                  </RouterLink>
-                    <a @click="hideElementshow" class="header__user _hover02">Ivan Ivanov</a>
+                  <button class="header__btn-main-new _hover01">
+                   <RouterLink to="/card/add"> Создать новую задачу </RouterLink>
+                  </button>
+                    <a color='black' @click="hideElementshow" class="header__user _hover02">Ivan Ivanov</a>
                     <div v-show="isVisible" class="header__pop-user-set pop-user-set">
-                        <p class='closeBtn' @click="hideElementclose" href="">x</p>
+                        <RouterLink to="/"><a class='closeBtn' @click="hideElementclose" href="#">x</a></RouterLink>
                         <p class="pop-user-set__name">Ivan Ivanov</p>
                         <p class="pop-user-set__mail">ivan.ivanov@gmail.com</p>
                         <div class="pop-user-set__theme">
                             <p>Темная тема</p>
                             <input type="checkbox" class="checkbox" name="checkbox">
                         </div>
-                        <button type="button" class="_hover03"><a href="#popExit">Выйти</a></button>
+                        <button type="button" class="_hover03"><RouterLink to="/exit">Выйти</RouterLink></button>
                     </div>
                 </nav>
             </div>
@@ -89,7 +81,7 @@ export default {
   width: 85px;
 }
 ._light {
-	display: none;
+	display: block;
 }
 ._dark {
 	display: block;
@@ -180,10 +172,11 @@ a {
 .pop-exit:target,
 .pop-new-card:target,
 .pop-browse:target {
-  display: block;
+  display: none;
 }
 .closeBtn{
   cursor: pointer;
+  color: black;
 }
 .pop-user-set__name {
   color: #000;

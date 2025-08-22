@@ -13,12 +13,16 @@ const router = createRouter({
       component: HomeView,
       children: [
         {
-        path: '/card/id',
+        path: '/card/:id',
           component: () => import('/src/views/TaskView.vue'),
         },
         {
           path: '/card/add',
-          component: () => import('/src/views/NewTaskView.vue'),
+          component: () => import ('/src/components/NewCardModel.vue'),
+        },
+        {
+          path: '/exit',
+          component: () => import ('/src/components/ExitModel.vue'),
         },
       ],
       meta: {

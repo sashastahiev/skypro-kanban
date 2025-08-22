@@ -1,3 +1,20 @@
+<!-- eslint-disable no-unused-vars -->
+<script setup>
+import { carts } from '@/mocks.js/task.js';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+
+const cart = computed(() => {
+   return carts.value.find((w) => w.id === route.params.id) || {
+      topic: '',
+      title: '',
+      date: '',
+      status: '',
+   }
+})
+</script>
 <template>
     <div class="pop-browse" id="popBrowse">
         <div class="pop-browse__container">
@@ -6,7 +23,7 @@
                     <div class="pop-browse__top-block">
                         <h3 class="pop-browse__ttl">Название задачи</h3>
                         <div class="categories__theme theme-top _orange _active-category">
-                            <p class="_orange">Web Design</p>
+                            <p class="_orange">${}</p>
                         </div>
                     </div>
                     <div class="pop-browse__status status">
@@ -143,7 +160,7 @@
   display: block;
 }
 .pop-browse {
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -183,7 +200,7 @@
   opacity: 1;
 }
 .pop-browse__content .theme-down {
-  display: none;
+  display: block;
   margin-bottom: 20px;
 }
 .theme-top {

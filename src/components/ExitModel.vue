@@ -1,3 +1,7 @@
+<script setup>
+import { RouterLink } from 'vue-router';
+</script>
+
 <template>
     <div class="pop-exit" id="popExit">
         <div class="pop-exit__container">
@@ -7,8 +11,8 @@
                 </div>
                 <form class="pop-exit__form" id="formExit" action="#">
                     <div class="pop-exit__form-group">
-                        <button class="pop-exit__exit-yes _hover01" id="exitYes"><a href="modal/signin.html">Да, выйти</a> </button>
-                        <button class="pop-exit__exit-no _hover03" id="exitNo"><a href="main.html">Нет, остаться</a> </button>
+                        <button class="pop-exit__exit-yes _hover01" id="exitYes"><RouterLink to="/sign-in">Да, выйти</RouterLink> </button>
+                        <button class="pop-exit__exit-no _hover03" id="exitNo"><RouterLink to="/" >Нет, остаться</RouterLink></button>
                     </div>
                 </form>
             </div>
@@ -18,7 +22,7 @@
 
 <style scoped>
 .pop-exit {
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   min-width: 320px;

@@ -553,7 +553,7 @@ position: relative;
 }
 
 .pop-browse {
-  display: none;
+  display: block;
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -593,7 +593,7 @@ position: relative;
   opacity: 1;
 }
 .pop-browse__content .theme-down {
-  display: none;
+  display: block;
   margin-bottom: 20px;
 }
 .pop-browse__content .theme-top {
