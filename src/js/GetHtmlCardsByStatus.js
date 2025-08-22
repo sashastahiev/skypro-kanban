@@ -1,3 +1,5 @@
+
+
 let colorTopic = ''
 export const GetHtmlCardsByStatus = (CardsByStatus, status) => {
 let content = CardsByStatus.map((cart, index) => {
@@ -14,14 +16,14 @@ let content = CardsByStatus.map((cart, index) => {
               <div class="card__theme ${colorTopic}">
                   <p class="${colorTopic}">${cart.topic}</p>
               </div>
-              <a href="#popBrowse" class="card__btn">
+              <RouterLink to='/card/:id' class="card__btn">
                 <div></div>
                 <div></div>
                 <div></div>
-              </a>
+              </RouterLink>
           </div>
           <div class="card__content">
-              <a href="" target="_blank">
+              <a href="#" target="_blank">
                   <h3 class="card__title">${cart.title}</h3>
               </a>
               <div class="card__date">

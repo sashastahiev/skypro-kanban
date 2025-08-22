@@ -5,7 +5,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute()
-
+let colorTopic = ''
 const cart = computed(() => {
    return carts.value.find((w) => w.id === route.params.id) || {
       topic: '',
@@ -14,6 +14,12 @@ const cart = computed(() => {
       status: '',
    }
 })
+if (cart.value.topic == 'Research')
+    colorTopic = '_green'
+if (cart.value.topic == 'Web Design')
+    colorTopic = '_orange'
+if (cart.value.topic == 'Copywriting')
+    colorTopic = '_purple'
 </script>
 <template>
     <div class="pop-browse" id="popBrowse">
@@ -21,9 +27,9 @@ const cart = computed(() => {
             <div class="pop-browse__block">
                 <div class="pop-browse__content">
                     <div class="pop-browse__top-block">
-                        <h3 class="pop-browse__ttl">Название задачи</h3>
-                        <div class="categories__theme theme-top _orange _active-category">
-                            <p class="_orange">${}</p>
+                        <h3 class="pop-browse__ttl">{{cart.value.title}}</h3>
+                        <div class="categories__theme theme-top {{colorTopic}} _active-category">
+                            <p class="_orange">{{ cart.value.topic }}</p>
                         </div>
                     </div>
                     <div class="pop-browse__status status">
@@ -33,7 +39,7 @@ const cart = computed(() => {
                                 <p>Без статуса</p>
                             </div>
                             <div class="status__theme _gray">
-                                <p class="_gray">Нужно сделать</p>
+                                <p class="_gray">{{cart.value.status}}</p>
                             </div>
                             <div class="status__theme _hide">
                                 <p>В работе</p>
@@ -122,7 +128,7 @@ const cart = computed(() => {
 
                                 <input type="hidden" id="datepick_value" value="08.09.2023">
                                 <div class="calendar__period">
-                                    <p class="calendar__p date-end">Срок исполнения: <span class="date-control">09.09.23</span></p>
+                                    <p class="calendar__p date-end">Срок исполнения: <span class="date-control">{{cart.value.date}}</span></p>
                                 </div>
                             </div>
                         </div>
