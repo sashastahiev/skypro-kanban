@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import BaseInput from '@/components/BaseInput.vue';
 import { signIn, signUp } from '@/services/auth';
