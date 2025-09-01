@@ -1,15 +1,97 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import { ref } from 'vue'
+import BaseInput from '@/components/BaseInput.vue';
+import { signIn, signUp } from '@/services/auth';
 
+const router = useRouter()
+const props = defineProps({
+ isSignUp: Boolean,
+})
+const formData = ref({
+ name: '',
+ login: '',
+ password: '',
+})
+const errors = ref({
+ name: false,
+ login: false,
+ password: false,
+})
+const error = ref('')
+function validateForm() {
+ let isValid = true
+ error.value = ''
+ // Сбросим все ошибки
+ errors.value.name = false
+ errors.value.login = false
+ errors.value.password = false
+ // Проверка имени (только для регистрации)
+ if (props.isSignUp && !formData.value.name.trim()) {
+    errors.value.name = true
+    isValid = false
+ }
+ // Проверка логина (эл. почты)
+ if (!formData.value.login.trim()) {
+    errors.value.login = true
+    isValid = false
+ }
+ // Проверка пароля
+ if (!formData.value.password.trim()) {
+    errors.value.password = true
+    isValid = false
+ }
+ // Если есть ошибки, установим общее сообщение
+ if (!isValid) {
+     error.value = 'Пожалуйста, заполните все обязательные поля'
+ }
+ return isValid
+}
+// eslint-disable-next-line no-unused-vars
+async function handleSubmit(event) {
+ event.preventDefault()
+ // Валидация формы перед отправкой
+ if (!validateForm()) {
+   return
+ }
+ try {
+    const data = props.isSignUp
+    ? await signUp(formData.value)
+    : await signIn({ login: formData.value.login, password: formData.value.password })
+ if (data) {
+    localStorage.setItem('userInfo', JSON.stringify(data))
+    router.push('/')
+ }
+ } catch (err) {
+ error.value = err.message
+ }
+}
 </script>
 
 <template>
   <section class="top">
     <div class="form-up">
       <div class="form-up_title">Регистрация</div>
-      <input placeholder="Имя" class="form-up_name" />
-      <input placeholder="Эл. почта" class="form-up_mail" />
-      <input placeholder="Пароль" class="form-up_password" />
+      <BaseInput
+              name="name"
+              id="formname"
+              placeholder="Имя"
+              v-model="formData.name"
+              class="form-up_name" />
+      <BaseInput
+              name="login"
+              id="formlogin"
+              placeholder="Эл. почта"
+              v-model="formData.login"
+              class="form-up_mail" />
+      <BaseInput
+              type="password"
+              name="password"
+              id="formpassword"
+              placeholder="Пароль"
+              v-model="formData.password"
+              class="form-up_password" />
+      <p v-show="error" class="error-text"> {{ error }} </p>
       <button class="form-up_btn">Зарегистрироваться</button>
       <div class="form-up_footer">
         <p class="margin0">Уже есть аккаунт?</p>
