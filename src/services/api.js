@@ -4,7 +4,7 @@ import { ref } from 'vue'
 // Импортируем функции и компоненты
 // ref - для создания реактивных переменных
 // onMounted - для запуска кода при монтировании компонента
-export const API_URL = 'https://wedev-api.sky.pro/api/words/'
+export const API_URL = 'https://wedev-api.sky.pro/api/kanban'
 const words = ref([])
 // ref([]) - массив для слов
 const loading = ref(false)

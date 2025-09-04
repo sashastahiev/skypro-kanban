@@ -49,7 +49,7 @@ function validateForm() {
 }
 // eslint-disable-next-line no-unused-vars
 async function handleSubmit(event) {
- event.preventDefault()
+  event.preventDefault()
  // Валидация формы перед отправкой
  if (!validateForm()) {
    return
@@ -70,7 +70,7 @@ async function handleSubmit(event) {
 
 <template>
   <section class="top">
-    <div class="form-up">
+    <form @submit="handleSubmit" class="form-up">
       <div class="form-up_title">Регистрация</div>
       <BaseInput
               name="name"
@@ -97,7 +97,7 @@ async function handleSubmit(event) {
         <p class="margin0">Уже есть аккаунт?</p>
         <RouterLink to="/sign-in" class="margin0">Войдите здесь</RouterLink>
       </div>
-    </div>
+    </form>
   </section>
 </template>
 
