@@ -1,20 +1,85 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter } from 'vue-router';
+import BaseInput from '@/components/BaseInput.vue';
+import { ref } from 'vue';
+import { signIn } from '@/services/auth';
 
+const router = useRouter()
+const formData = ref({
+ login: '',
+ password: '',
+})
+const errors = ref({
+ login: false,
+ password: false,
+})
+const error = ref('')
+function validateForm() {
+ let isValid = true
+ error.value = ''
+ // Сбросим все ошибки
+ errors.value.login = false
+ errors.value.password = false
+
+ // Проверка логина (эл. почты)
+ if (!formData.value.login.trim()) {
+    errors.value.login = true
+    isValid = false
+ }
+ // Проверка пароля
+ if (!formData.value.password.trim()) {
+    errors.value.password = true
+    isValid = false
+ }
+ // Если есть ошибки, установим общее сообщение
+ if (!isValid) {
+     error.value = 'Пожалуйста, заполните все обязательные поля'
+ }
+ return isValid
+}
+async function handleSubmit(event) {
+  event.preventDefault()
+ // Валидация формы перед отправкой
+ if (!validateForm()) {
+   return
+ }
+ try {
+    const data = await signIn(formData.value)
+    console.log(data)
+ if (data) {
+    localStorage.setItem('userInfo', JSON.stringify(data))
+    router.push('/')
+ }
+ } catch (err) {
+ error.value = err.message
+ }
+}
 </script>
 
 <template>
   <section class="top">
-    <div class="form-in">
+    <form @submit="handleSubmit" class="form-in">
       <div class="form-in_title">Вход</div>
-      <input placeholder="Эл. почта" class="form-in_mail">
-      <input placeholder="Пароль" class="form-in_password">
+      <BaseInput
+              name="login"
+              id="formlogin"
+              placeholder="Эл. почта"
+              v-model="formData.login"
+              class="form-in_mail" />
+      <BaseInput
+              type="password"
+              name="password"
+              id="formpassword"
+              placeholder="Пароль"
+              v-model="formData.password"
+              class="form-in_password" />
+      <p v-show="error" class="error-text"> {{ error }} </p>
       <button class="form-in_btn">Войти</button>
       <div class="form-in_footer">
         <p class="margin0">Нужно зарегистрироваться?</p>
         <RouterLink to="/sign-up" class="margin0">Регистрируйтесь здесь</RouterLink>
       </div>
-    </div>
+    </form>
   </section>
 </template>
 

@@ -2,12 +2,9 @@
 import { useRouter } from 'vue-router';
 import { ref } from 'vue'
 import BaseInput from '@/components/BaseInput.vue';
-import { signIn, signUp } from '@/services/auth';
+import { signUp } from '@/services/auth';
 
 const router = useRouter()
-const props = defineProps({
- isSignUp: Boolean,
-})
 const formData = ref({
  name: '',
  login: '',
@@ -27,7 +24,7 @@ function validateForm() {
  errors.value.login = false
  errors.value.password = false
  // Проверка имени (только для регистрации)
- if (props.isSignUp && !formData.value.name.trim()) {
+ if (!formData.value.name.trim()) {
     errors.value.name = true
     isValid = false
  }
@@ -47,7 +44,6 @@ function validateForm() {
  }
  return isValid
 }
-// eslint-disable-next-line no-unused-vars
 async function handleSubmit(event) {
   event.preventDefault()
  // Валидация формы перед отправкой
@@ -55,9 +51,8 @@ async function handleSubmit(event) {
    return
  }
  try {
-    const data = props.isSignUp
-    ? await signUp(formData.value)
-    : await signIn({ login: formData.value.login, password: formData.value.password })
+    const data = await signUp(formData.value)
+    console.log(data)
  if (data) {
     localStorage.setItem('userInfo', JSON.stringify(data))
     router.push('/')
