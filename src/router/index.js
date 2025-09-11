@@ -3,26 +3,29 @@ import SignInView from '@/views/SignInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import HomeView from '@/views/HomeView.vue'
+import AppLayout from '@/layout/AppLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView,
+      path: '',
+      component: AppLayout,
       children: [
         {
-        path: '/card/:id',
-          component: () => import('/src/views/TaskView.vue'),
-        },
-        {
-          path: '/card/add',
-          component: () => import ('/src/components/NewCardModel.vue'),
-        },
-        {
-          path: '/exit',
-          component: () => import ('/src/components/ExitModel.vue'),
+          path: '',
+          name: 'home',
+          component: HomeView,
+          children: [
+            {
+              path: '/card/add',
+              component: () => import('@/components/NewCardModel.vue'),
+            },
+            {
+              path: '/card/:id',
+              component: () => import('/src/views/TaskView.vue'),
+            },
+          ],
         },
       ],
       meta: {
@@ -31,20 +34,15 @@ const router = createRouter({
     },
     {
       path: '/sign-in',
-      name: 'authorization',
-      component: SignInView
+      component: SignInView,
     },
     {
       path: '/sign-up',
-      name: 'registration',
-      component: SignUpView
+      component: SignUpView,
     },
-    {
-      path: '/:pathMatch(.*)*',
-      component: NotFoundView,
-    }
+    { path: '/:pathMatch(.*)*', component: NotFoundView },
   ],
-})
+});
 // router.beforeEach((to, from, next) => {
 //    // Берем токен
 //    const token = localStorage.getItem('userInfo');

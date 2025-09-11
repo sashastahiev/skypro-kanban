@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 import BaseInput from '@/components/BaseInput.vue';
 import { signUp } from '@/services/auth';
 
 const router = useRouter()
+const { setUserInfo }  = inject('auth')
+
 const formData = ref({
  name: '',
  login: '',
@@ -55,6 +57,7 @@ async function handleSubmit(event) {
     console.log(data)
  if (data) {
     localStorage.setItem('userInfo', JSON.stringify(data))
+    setUserInfo(data)
     router.push('/')
  }
  } catch (err) {
